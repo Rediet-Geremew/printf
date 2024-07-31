@@ -32,6 +32,12 @@ int _printf(const char *format, ...)
 			case '%':
 				print_percent(&characters_printed);
 				break;
+			case 'i':
+				print_integer(args, &characters_printed);
+				break;
+			case 'd':
+				print_integer(args, &characters_printed);
+				break;
 			default:
 				write(1, fpointer, 1);
 				characters_printed++;
