@@ -27,10 +27,13 @@ void print_string(va_list args, int *characters_printed)
 	char *str;
 
 	str = va_arg(args, char *);
-	for (i = 0; str[i] != '\0'; i++)
+	if (str != NULL)
 	{
-		write(1, &(str[i]), 1);
-		(*characters_printed)++;
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			write(1, &(str[i]), 1);
+			(*characters_printed)++;
+		}
 	}
 }
 
