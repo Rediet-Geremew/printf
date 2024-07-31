@@ -20,8 +20,9 @@ void print_char(va_list args, int *characters_printed)
  * print_string - prints a string
  * @args: list of arguments
  * @characters_printed: pointer to the character count
+ * Return: number of chars printed
  */
-void print_string(va_list args, int *characters_printed)
+int print_string(va_list args, int *characters_printed)
 {
 	int i;
 	char *str;
@@ -35,6 +36,11 @@ void print_string(va_list args, int *characters_printed)
 			(*characters_printed)++;
 		}
 	}
+	else
+	{
+		str = "(null)";
+	}
+	return (write(1, str, 1));
 }
 
 /**
