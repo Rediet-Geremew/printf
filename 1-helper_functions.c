@@ -3,15 +3,43 @@
 #include <stdarg.h>
 
 /**
- * print_integer - prints an integer
- * @args: list of arguments
- * @characters_printed: pointer to the character count
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-void print_integer(va_list args, int *characters_printed)
+int _putchar(char c)
 {
-	int i;
+	return (write(1, &c, 1));
+}
 
-	i = va_arg(args, int);
-	write(1, &i, 1);
-	(*characters_printed)++;
+/**
+ * print_integer - prints an integer
+ * @n: the interger to be printed
+ *
+ * Return: number of characters printed
+ */
+int print_integer(int n)
+{
+	int character_count = 0;
+	unsigned int number;
+
+	if (n < 0)
+	{
+		_putchar('-');
+		character_count++;
+		number = -n;
+	}
+	else
+	{
+		number = n;
+	}
+	if (number / 10)
+	{
+		character_count += print_integer(number / 10);
+	}
+	_putchar((number % 10) + '0');
+	character_count++;
+	return (character_count);
 }

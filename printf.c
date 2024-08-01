@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 {
 	const char *fpointer;
 	int characters_printed = 0;
+	int num;
+	int doub;
 	va_list args;
 
 	va_start(args, format);
@@ -33,10 +35,12 @@ int _printf(const char *format, ...)
 				print_percent(&characters_printed);
 				break;
 			case 'i':
-				print_integer(args, &characters_printed);
+				num = va_arg(args, int);
+				characters_printed += print_integer(num);
 				break;
 			case 'd':
-				print_integer(args, &characters_printed);
+				doub = va_arg(args, int);
+				characters_printed += print_integer(doub);
 				break;
 			default:
 				write(1, fpointer, 1);
